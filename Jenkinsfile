@@ -29,7 +29,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    if [[ ! -f build/index.html ]];
+                    if [[ ! -f build/index.html ]]; then
                         exit 1
                     fi
                     node --version
