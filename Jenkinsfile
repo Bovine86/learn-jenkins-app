@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Test stage"
-                    if [[ ! -f build/index.html ]]; then
+                    if [[ ! -f build/inde.html ]]; then
                         exit 1
                     fi
                     npm test
