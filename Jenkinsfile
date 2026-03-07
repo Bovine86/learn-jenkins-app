@@ -33,8 +33,6 @@ pipeline {
                     if [[ ! -f build/index.html ]]; then
                         exit 1
                     fi
-                    node --version
-                    npm --version
                     npm test
                 '''
             }
