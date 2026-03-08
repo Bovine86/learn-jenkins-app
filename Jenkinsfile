@@ -38,12 +38,12 @@ pipeline {
                             npm test
                         '''
                     }
-                }
-                post {
+                    post {
                         always {
                             junit 'test1-results/junit.xml'
                         }
                     }
+                }
                 stage('E2E Tests') {
                     agent {
                         docker {
@@ -63,12 +63,12 @@ pipeline {
                             npx playwright test --reporter=html
                         '''
                     }
-                }
-                post {
+                    post {
                         always {
                             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Playwright HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                         }
                     }
+                }
             }
         }
     }
