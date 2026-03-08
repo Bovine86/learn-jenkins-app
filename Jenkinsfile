@@ -47,7 +47,7 @@ pipeline {
             steps {
                 sh '''
                     echo "E2E testing stage"
-                    if [[ ! -f node_modules/.bin/serve  ]]; then
+                    if [[ ! -f node_modules/.bin/serve ]]; then
                         npm install serve
                     fi
                     node_modules/.bin/serve -s build &
