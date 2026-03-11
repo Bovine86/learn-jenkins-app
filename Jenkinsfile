@@ -83,7 +83,7 @@ pipeline {
                 steps {
                     sh '''
                         echo "Deployment stage"
-                        if [ ! -L node_modules/.bin/netlify-cli ]; then
+                        if [ ! -L node_modules/.bin/netlify ]; then
                             npm install netlify-cli@20.1.1
                         fi
                         node_modules/.bin/netlify --version
