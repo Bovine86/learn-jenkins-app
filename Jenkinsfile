@@ -56,7 +56,7 @@ pipeline {
                     steps {
                         sh '''
                             echo "E2E testing stage"
-                            if [ ! -f node_modules/.bin/serve ]; then
+                            if [ ! -L node_modules/.bin/serve ]; then
                                 npm install serve
                             fi
                             node_modules/.bin/serve -s build &
@@ -83,7 +83,7 @@ pipeline {
                 steps {
                     sh '''
                         echo "Deployment stage"
-                        if [ ! -f node_modules/.bin/netlify-cli ]; then
+                        if [ ! -L node_modules/.bin/netlify-cli ]; then
                             npm install netlify-cli@20.1.1
                         fi
                         node_modules/.bin/netlify --version
