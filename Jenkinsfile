@@ -92,10 +92,14 @@ pipeline {
                         if [ ! -L node_modules/.bin/netlify ]; then
                             npm install netlify-cli@20.1.1
                         fi
+                        if [ ! -L node_modules/.bin/node-jq ]; then
+                            npm install node-jq
+                        fi
                         node_modules/.bin/netlify --version
                         echo "Deploying to Staging. Site ID: $NETLIFY_SITE_ID"
                         node_modules/.bin/netlify status
-                        node_modules/.bin/netlify deploy --dir=build
+                        node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
+                        node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json
                     '''
                 }
             }
