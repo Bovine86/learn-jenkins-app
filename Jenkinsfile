@@ -99,6 +99,15 @@ pipeline {
                     '''
                 }
             }
+        stage('Manual Approval') {
+            steps {
+                echo 'Wating for manual approval...'
+                timeout(time: 1, unit: 'HOURS') {
+                    input 'Ready to deploy to production?', ok: "Proceed", cancel: "Abort"
+                        }
+                }
+            }   
+    }
         stage('Deploy prod') {
                 agent {
                     docker {
