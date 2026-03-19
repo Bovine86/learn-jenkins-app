@@ -102,7 +102,7 @@ pipeline {
         stage('Manual Approval') {
             steps {
                 echo 'Wating for manual approval...'
-                timeout(time: 1, unit: 'HOURS') {
+                timeout(time: 15, unit: 'MINUTES') {
                     input message: 'Deploy to production?', ok: "Proceed", cancel: "Abort"
                         }
                 }
