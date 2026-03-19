@@ -106,8 +106,7 @@ pipeline {
                     input 'Ready to deploy to production?', ok: "Proceed", cancel: "Abort"
                         }
                 }
-            }   
-    }
+            } 
         stage('Deploy prod') {
                 agent {
                     docker {
