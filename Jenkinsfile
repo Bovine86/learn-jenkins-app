@@ -69,6 +69,7 @@ pipeline {
                             sleep 10
                             #npx playwright test
                             npx playwright test --reporter=html
+                            mkdir -p playwright-report-local
                         '''
                     }
                     post {
@@ -118,6 +119,7 @@ pipeline {
                     steps {
                         sh '''
                             npx playwright test --reporter=html
+                            mkdir -p playwright-report-staging
                         '''
                     }
                     post {
@@ -167,6 +169,7 @@ pipeline {
                     steps {
                         sh '''
                             npx playwright test --reporter=html
+                            mkdir -p playwright-report-prod
                         '''
                     }
                     post {
