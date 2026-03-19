@@ -132,6 +132,7 @@ pipeline {
                             node_modules/.bin/netlify --version
                             echo "Deploying to Prod. Site ID: $NETLIFY_SITE_ID"
                             node_modules/.bin/netlify status
+                            ode_modules/.bin/netlify deploy --dir=build --prod
                             npx playwright test --reporter=html
                             mkdir -p playwright-report-prod
                             cp playwright-report/index.html playwright-report-prod/
