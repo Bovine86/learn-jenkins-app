@@ -70,6 +70,7 @@ pipeline {
                             #npx playwright test
                             npx playwright test --reporter=html
                             mkdir -p playwright-report-local
+                            mv playwright-report playwright-report-local
                         '''
                     }
                     post {
@@ -120,6 +121,7 @@ pipeline {
                         sh '''
                             npx playwright test --reporter=html
                             mkdir -p playwright-report-staging
+                            mv playwright-report playwright-report-staging
                         '''
                     }
                     post {
@@ -170,6 +172,7 @@ pipeline {
                         sh '''
                             npx playwright test --reporter=html
                             mkdir -p playwright-report-prod
+                            mv playwright-report playwright-report-prod
                         '''
                     }
                     post {
