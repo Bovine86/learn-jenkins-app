@@ -108,15 +108,7 @@ pipeline {
                             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'playwright-report-staging', reportFiles: 'index.html', reportName: 'Staging E2E', reportTitles: '', useWrapperFileDirectly: true])
                         }
                     }
-                }
-        stage('Manual Approval') {
-            steps {
-                echo 'Wating for manual approval...'
-                timeout(time: 15, unit: 'MINUTES') {
-                    input message: 'Deploy to production?', ok: "Proceed", cancel: "Abort"
-                        }
-                }
-            } 
+                } 
         stage('Deploy Prod') {
                     environment {
                         CI_ENVIRONMENT_URL = 'https://stellular-liger-3b235c.netlify.app'
