@@ -103,7 +103,7 @@ pipeline {
             steps {
                 echo 'Wating for manual approval...'
                 timeout(time: 1, unit: 'HOURS') {
-                    input 'Ready to deploy to production?', ok: "Proceed", cancel: "Abort"
+                    input message: 'Deploy to production?', ok: "Proceed", cancel: "Abort"
                         }
                 }
             } 
