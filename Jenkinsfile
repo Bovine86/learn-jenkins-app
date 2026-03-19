@@ -30,7 +30,7 @@ pipeline {
         
         stage('Local Tests') {
             parallel {
-                stage('Unit Tests') {
+                stage('Local Unit Tests') {
                     agent {
                         docker {
                             image 'node:18-alpine'
@@ -94,7 +94,7 @@ pipeline {
                             echo "Deploying to Staging. Site ID: $NETLIFY_SITE_ID"
                             node_modules/.bin/netlify status
                             node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
-                            sleep(10)
+                            sleep 10
                             CI_ENVIRONMENT_URL=$(node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json)
                             npx playwright test --reporter=html
                             mkdir -p playwright-report-staging
@@ -133,6 +133,7 @@ pipeline {
                             echo "Deploying to Prod. Site ID: $NETLIFY_SITE_ID"
                             node_modules/.bin/netlify status
                             node_modules/.bin/netlify deploy --dir=build --prod
+                            sleep 10
                             npx playwright test --reporter=html
                             mkdir -p playwright-report-prod
                             cp playwright-report/index.html playwright-report-prod/
