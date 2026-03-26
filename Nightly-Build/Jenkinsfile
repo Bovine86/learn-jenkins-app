@@ -6,7 +6,7 @@ pipeline {
 
         stage('Docker image build') {
                     steps {
-                        sh 'docker build -t my-playwright .'
+                        sh 'docker build -t my-playwright Nightly-Build/Dockerfile'
                     }
                 }
     }
